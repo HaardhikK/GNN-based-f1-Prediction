@@ -242,7 +242,7 @@ def predict_driver_page():
     if model is None:
         st.stop()
 
-    df = pd.read_csv('2024_Races_with_predictions_full_streamlit.csv', encoding='ISO-8859-1')
+    df = pd.read_csv('streamlit.csv', encoding='ISO-8859-1')
 
     # User input for features
     st.subheader("Enter Driver and Race Details")
