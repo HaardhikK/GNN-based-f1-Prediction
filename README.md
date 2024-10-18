@@ -28,6 +28,6 @@ Welcome to the **F1 Race Predictor 2024**! This project predicts the probability
    - The prediction result is visualized with a gauge chart.
 
 
-![3D Graph](path_to_image)
+![3D Graph](images/img1.png)
 
 
