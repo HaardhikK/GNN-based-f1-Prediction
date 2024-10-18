@@ -1,5 +1,5 @@
 # F1 Race Predictor 2024 🏎️
-
+https://gnn-based-f1-prediction.streamlit.app/
 Welcome to the **F1 Race Predictor 2024**! This project predicts the probability of F1 drivers winning specific races using a combination of traditional machine learning models and Graph Neural Networks (GNNs). It also features interactive 3D visualizations to explore race relationships, driver performance, and constructor data.
 
 ![3D Graph](images/img1.png)
