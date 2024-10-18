@@ -29,16 +29,34 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Function to load the model from a pickle file
 @st.cache_resource
+@st.cache_resource
 def load_model():
     model_path = 'random_forest_grid_search.pkl'
     try:
+        import pickle5 as pickle  # More robust pickle loading
+    except ImportError:
+        import pickle
+    
+    try:
         with open(model_path, 'rb') as file:
-            grid_search_cv = pickle.load(file)
-        return grid_search_cv.best_estimator_
+            # Try different encoding options
+            try:
+                grid_search_cv = pickle.load(file, encoding='latin1')
+            except:
+                file.seek(0)
+                grid_search_cv = pickle.load(file)
+            
+            # Return the best estimator if it exists
+            if hasattr(grid_search_cv, 'best_estimator_'):
+                return grid_search_cv.best_estimator_
+            return grid_search_cv
+            
     except Exception as e:
         st.error(f"Failed to load the model. Error: {e}")
-        return None
-
+        # Create a fallback model if loading fails
+        from sklearn.ensemble import RandomForestClassifier
+        st.warning("Using a backup model due to loading issues...")
+        return RandomForestClassifier(n_estimators=100, random_state=42)
 # Function to load the race data
 @st.cache_data
 def load_data():
